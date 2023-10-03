@@ -30,15 +30,19 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 5px;
+    background-color: rgb(116, 116, 116);
+    
    
   }
 
-  .button {
+  .buttonContainer {
     text-align: center;
-     
+  
   }
 
- .reset {
+ .resetButton {
+    background-color: rgb(255, 255, 255);
+    color:   rgb(116, 116, 116);
     font-size: 34px;
     width: 150px;
     border: 2px solid blue;
@@ -49,6 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(255, 255, 255);
   }
   
 
