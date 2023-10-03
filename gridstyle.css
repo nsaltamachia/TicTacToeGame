@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid red;
+    font-family:"Londrina Shadow";
+  }
+  
+  body {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 60px;
+  }
+
+  h3 {
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif
+  }
+
+  .gridContainer {
+    height: 80vh;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+   
+  }
+
+  .button {
+    text-align: center;
+     
+  }
+
+ .reset {
+    font-size: 34px;
+    width: 150px;
+    border: 2px solid blue;
+    cursor: pointer;
+  }
+
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  grid-child:nth-child(#) {
+
+
+  }
