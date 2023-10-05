@@ -37,11 +37,13 @@ const resetButton = document.querySelector(".resetButton");
       if (currentPlayer === 1) {
         cell.innerHTML = player1[1];
         cell.style.fontFamily = "Londrina Shadow";
+        //cell.style.fontSize = ""
         currentPlayer = -1;
       }
       else if (currentPlayer === -1) {
         cell.innerHTML = player2[1];
         cell.style.fontFamily = "Londrina Shadow";
+        //cell.style.fontSize = ""
         currentPlayer = 1;
       }
       
