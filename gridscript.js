@@ -29,7 +29,7 @@ const resetButton = document.querySelector(".resetButton");
 
   gameBoardElement.forEach(function(cell) {
   cell.addEventListener("click", function(){
-    //handleCellClick(cell);
+    
     if (cell.innerText === "") {
       console.log(cell);
       //change the cell's innerHTML to player's symbol (X or O), but do I have these declared?
@@ -38,53 +38,50 @@ const resetButton = document.querySelector(".resetButton");
         cell.innerHTML = player1[1];
         cell.style.fontFamily = "Londrina Shadow";
         //cell.style.fontSize = ""
+        checkWinner(),
         currentPlayer = -1;
+        //change .message to say whose turn it is
       }
       else if (currentPlayer === -1) {
         cell.innerHTML = player2[1];
         cell.style.fontFamily = "Londrina Shadow";
         //cell.style.fontSize = ""
+        checkWinner()
         currentPlayer = 1;
+        //change .message to say whose turn it is
       }
-      
     }
-    
-    
   }) 
-  })
+  //after a click is made, update the gameBoard (change cell state to the corresponding player)
+  //updateGameBoard
+  
+})
 
 /*----- functions -----*/
-function intialize() {
 
-}
-
-function handleCellClick(cell) {
-  //if (gameBoardElement[cell] !== "") return
-  
-  
-  //checkWinner();
-  
-}
-/*
+//check current state for winning pattern
 function checkWinner() {
- 
-  if (winner === false) 
-  { 
-    
-  } else {
-   
-  }
+const checkWinningPattern = (pattern) => {
+const [a, b, c] = pattern;
+return gameBoard[a] && gameBoard[b] === gameBoard[b] && gameBoard[a] === gameBoard[c];
+};
+
+const winningPattern = winningPatterns.find(checkWinningPattern);
+
+if (winningPattern) {
+  winner = currentPlayer === 1 ? player1[1] : player2[1];
+  messageElement.textContent = "`${winner} Wins!"
+} else if (gameBoard.every(cell => cell !== "")) {
+  messageElement.textContent = "It's a draw! Play again?";
 }
-*/
+
+  
+}
+
+
+/*
 function resetGame() {
 //clear input fields
 //reset variables
 }
-
-
-  
-   
-
-
-  if (currentPlayer === 1) {
-  }
+*/
