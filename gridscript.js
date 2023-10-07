@@ -28,7 +28,7 @@ gameBoardElement.forEach(function (cell) {
         cell.innerHTML = player1[1];
         cell.style.fontFamily = "Londrina Shadow";
         cell.style.fontSize = "100px"
-       
+        checkWinner();
         currentPlayer = -1;
         messageElement.innerHTML = "It's O's Turn"
       }
@@ -37,7 +37,7 @@ gameBoardElement.forEach(function (cell) {
         cell.innerHTML = player2[1];
         cell.style.fontFamily = "Londrina Shadow";
         cell.style.fontSize = "100px"
-      
+        checkWinner();
         currentPlayer = 1;
         messageElement.innerHTML = "It's X's Turn"
       }
@@ -55,9 +55,9 @@ gameBoardElement.forEach(function (cell) {
   //check current state for winning pattern
 function checkWinner() {
   if (turnsLeft === 0) {
-  messageElement.innerHTML = "It's a draw! Press RESET to play again!";
-  setTimeout(resetGame, 5000);
-}
+    messageElement.innerHTML = "It's a draw! Press RESET to play again!";
+    setTimeout(resetGame, 5000);
+  } else {
     const winningPatterns = [
       [0, 1, 2],
       [3, 4, 5],
@@ -70,21 +70,26 @@ function checkWinner() {
     ];
     for (const pattern of winningPatterns) {
       const [a, b, c] = pattern;
-      if (gameBoardElement[a] && gameBoardElement[a] === gameBoardElement[b] && gameBoardElement[a] === gameBoardElement[c]) {
-        winner = currentPlayer === 1 ? player1[1] : player2[1];
-        //////////write out an if statement to set the standards for player 1 or player 2 winning
-        messageElement.textContent = `${winner} Wins!`
+      const cellA = gameBoardElement[a].innerText;
+      const cellB = gameBoardElement[b].innerText;
+      const cellC = gameBoardElement[c].innerText;
+
+      if (cellA && cellA === cellB && cellA === cellC) {
+        const winningPlayer = cellA === player1[1] ? player1[1] : player2[1];
+        messageElement.textContent = `${winningPlayer} Wins!`
         return;
       }
     }
   }
-
+}
 
   
 function resetGame() {
   gameBoardElement.forEach(function (cell) {
     if (cell.innerText === "X" || cell.innerText === "O") {
       cell.innerText = "";
+      turnsLeft = 9;
+      currentPlayer = 1;
       messageElement.innerHTML = "It's X's Turn";
     }
   })
